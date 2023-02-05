@@ -1890,10 +1890,23 @@ tile(Monitor *m)
 			if (my + HEIGHT(c) + m->gap->gappx < m->wh)
 				my += HEIGHT(c) + m->gap->gappx;
 		} else {
-			h = (m->wh - ty) / (n - i) - m->gap->gappx;
-			resize(c, m->wx + mw + m->gap->gappx, m->wy + ty, m->ww - mw - (2*c->bw) - 2*m->gap->gappx, h - (2*c->bw), 0);
-			if (ty + HEIGHT(c) + m->gap->gappx < m->wh)
-				ty += HEIGHT(c) + m->gap->gappx;
+			smh = m->mh * m->smfact;
+			if(!(nexttiled(c->next)))
+				h = (m->wh - ty) / (n - i) - m->gap->gappx;
+			else
+				h = (m->wh - smh - ty) / (n - i) - m->gap->gappx;
+			if(h < minwsz) {
+				c->isfloating = True;
+				XRaiseWindow(dpy, c->win);
+				resize(c, m->mx + (m->mw / 2 - WIDTH(c) / 2) + m->gap->gappx, m->my + (m->mh / 2 - HEIGHT(c) / 2), m->ww - mw - (2*c->bw) - 2*m->gap->gappx, h - (2*c->bw), 0);
+				ty -= HEIGHT(c);
+			}
+			else
+				resize(c, m->wx + mw + m->gap->gappx, m->wy + ty, m->ww - mw - (2*c->bw) - 2*m->gap->gappx, h - (2*c->bw), 0);
+			if(!(nexttiled(c->next)))
+				ty += HEIGHT(c) + smh;
+			else
+				if (ty + HEIGHT(c) + m->gap->gappx < m->wh) ty += HEIGHT(c) + m->gap->gappx;
 		}
 }
 
