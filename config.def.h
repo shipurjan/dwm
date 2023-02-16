@@ -15,15 +15,19 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
+static const char col_darkpurple[]  = "#4b084c";
+static const char col_lightpurple[] = "#c615c8";
+static const char col_lightyellow[] = "#f9f9c8";
+static const char col_pumpkin[]     = "#ff7518";
 static const char col_cyan[]        = "#005577";
 static const char col_green[]       = "#00ff00";
 static const char col_red[]         = "#ff0000";
 static const char col_black[]       = "#000000";
 static const char col_white[]       = "#ffffff";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_black,   col_black },
-	[SchemeSel]  = { col_black, col_white,   col_white},
+	/*               fg               bg              border   */
+	[SchemeNorm] = { col_white,       col_black,      col_black },
+	[SchemeSel]  = { col_lightyellow, col_darkpurple, col_lightpurple },
 };
 
 /* tagging */
