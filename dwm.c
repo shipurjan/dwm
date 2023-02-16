@@ -981,6 +981,16 @@ focusmon(const Arg *arg)
 	focus(NULL);
 	if (selmon->sel)
 		XWarpPointer(dpy, None, selmon->sel->win, 0, 0, 0, 0, selmon->sel->w/2, selmon->sel->h/2);
+  else { 
+    /* This scope only works when screens have 
+     * 0px gap between them in the driver settings 
+     * (for example 0,0,1920,1080+1920,0,1600,900) */ 
+    int totalx = 0;
+    for (m = mons; m->num < selmon->num; m = m->next){
+      totalx += m->mw;
+    }
+    XWarpPointer(dpy, None, root, 0, 0, 0, 0, totalx+selmon->mw/2, selmon->mh/2);
+  }
 }
 
 void
