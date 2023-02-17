@@ -30,6 +30,14 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_lightyellow, col_darkpurple, col_lightpurple },
 };
 
+static const char *const autostart[] = {
+	"alacritty", NULL,
+  "steam", NULL,
+  "discord", NULL,
+  "qbittorrent", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
 
