@@ -48,6 +48,8 @@ static const Rule rules[] = {
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1 },
 	{ "mpv",          NULL,       NULL,       0,            1,           -1 },
   { "qBittorrent",  NULL,       NULL,       1 << 6,       0,            1 },
+  { "steam_app_",   NULL,       NULL,       1 << 0,       0,            0 },
+  { "csgo_linux64", NULL,       NULL,       1 << 0,       0,            0 },
   { "discord",      NULL,       NULL,       1 << 5,       0,            1 },
   { "Steam",        NULL,       NULL,       1 << 4,       0,            1 },
 };
