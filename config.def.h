@@ -7,8 +7,10 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const Gap default_gap        = {.isgap = 0, .realgap = 50, .gappx = 0};
 static const unsigned int snap      = 8;       /* snap pixel */
 static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for smfact */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int showbar            = 1;        /* 0 means no standard bar */
+static const int topbar             = 0;        /* 0 means standard bar at bottom */
+static const int extrabar           = 1;        /* 0 means no extra bar */
+static const char statussep         = ';';      /* separator between statuses */
 static const char *fonts[]          = { "PragmataPro Liga:style=Regular:antialias=true:autohint=true:size=13" };
 static const char dmenufont[]       = "PragmataPro Liga:style=Regular:antialias=true:autohint=true:size=13";
 static const char col_gray1[]       = "#222222";
@@ -93,6 +95,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_KP_Enter,      spawn,          {.v = termcmd } },
   { MODKEY|ShiftMask,             XK_Return,        focusmaster,    {0} },
 	{ MODKEY,                       XK_b,             togglebar,      {0} },
+	{ MODKEY,                       XK_b,             toggleextrabar, {0} },
 	{ MODKEY,                       XK_j,             focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,             focusstack,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_j,             movestack,      {.i = +1 } },
@@ -146,7 +149,7 @@ static const Key keys[] = {
 };
 
 /* button definitions */
-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, ClkRootWin, ClkExBarLeftStatus, ClkExBarMiddle or ClkExBarRightStatus */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
@@ -158,6 +161,24 @@ static const Button buttons[] = {
 	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
 	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
 	{ ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 6} },
+	{ ClkExBarLeftStatus,   0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkExBarLeftStatus,   0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkExBarLeftStatus,   0,              Button3,        sigstatusbar,   {.i = 3} },
+	{ ClkExBarLeftStatus,   0,              Button4,        sigstatusbar,   {.i = 4} },
+	{ ClkExBarLeftStatus,   0,              Button5,        sigstatusbar,   {.i = 5} },
+	{ ClkExBarLeftStatus,   ShiftMask,      Button1,        sigstatusbar,   {.i = 6} },
+	{ ClkExBarMiddle,       0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkExBarMiddle,       0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkExBarMiddle,       0,              Button3,        sigstatusbar,   {.i = 3} },
+	{ ClkExBarMiddle,       0,              Button4,        sigstatusbar,   {.i = 4} },
+	{ ClkExBarMiddle,       0,              Button5,        sigstatusbar,   {.i = 5} },
+	{ ClkExBarMiddle,       ShiftMask,      Button1,        sigstatusbar,   {.i = 6} },
+	{ ClkExBarRightStatus,  0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkExBarRightStatus,  0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkExBarRightStatus,  0,              Button3,        sigstatusbar,   {.i = 3} },
+	{ ClkExBarRightStatus,  0,              Button4,        sigstatusbar,   {.i = 4} },
+	{ ClkExBarRightStatus,  0,              Button5,        sigstatusbar,   {.i = 5} },
+	{ ClkExBarRightStatus,  ShiftMask,      Button1,        sigstatusbar,   {.i = 6} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
