@@ -76,7 +76,6 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
 #define STATUSBAR "dwmblocks"
 
 /* commands */
@@ -89,22 +88,22 @@ static const Key keys[] = {
 	{ MODKEY,                         XK_d,               spawn,            {.v = dmenucmd } },
 	{ MODKEY,                         XK_Return,          spawn,            {.v = termcmd } },
 	{ MODKEY,                         XK_KP_Enter,        spawn,            {.v = termcmd } },
-  { MODKEY|ShiftMask,               XK_Return,          focusmaster,      {0} },
 	{ MODKEY,                         XK_b,               togglebar,        {0} },
 	{ MODKEY,                         XK_j,               focusstack,       {.i = +1 } },
 	{ MODKEY,                         XK_k,               focusstack,       {.i = -1 } },
-	{ MODKEY|ShiftMask,               XK_j,               movestack,        {.i = +1 } },
-	{ MODKEY|ShiftMask,               XK_k,               movestack,        {.i = -1 } },
-	{ MODKEY|ShiftMask|ControlMask,   XK_j,               rotatestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask|ControlMask,   XK_k,               rotatestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,               XK_j,               rotatestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,               XK_k,               rotatestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask|ControlMask,   XK_j,               movestack,        {.i = +1 } },
+	{ MODKEY|ShiftMask|ControlMask,   XK_k,               movestack,        {.i = -1 } },
 	{ MODKEY,                         XK_i,               incnmaster,       {.i = +1 } },
 	{ MODKEY,                         XK_u,               incnmaster,       {.i = -1 } },
 	{ MODKEY,                         XK_h,               setmfact,         {.f = -0.05} },
 	{ MODKEY,                         XK_l,               setmfact,         {.f = +0.05} },
 	{ MODKEY|ShiftMask,               XK_h,               setsmfact,        {.f = +0.05} },
 	{ MODKEY|ShiftMask,               XK_l,               setsmfact,        {.f = -0.05} },
-	{ MODKEY,                         XK_Return,          zoom,             {0} },
-	{ MODKEY,                         XK_Tab,             view,             {0} },
+	{ MODKEY,                         XK_BackSpace,       zoom,             {0} },
+  { MODKEY,                         XK_Tab,             focusmaster,      {0} },
+	{ MODKEY|ShiftMask,               XK_Tab,             view,             {0} },
 	{ MODKEY|ShiftMask,               XK_q,               killclient,       {0} },
 	{ MODKEY,                         XK_t,               setlayout,        {.v = &layouts[0]} },
 	{ MODKEY,                         XK_f,               setlayout,        {.v = &layouts[1]} },
@@ -123,8 +122,8 @@ static const Key keys[] = {
 	{ MODKEY,                         XK_KP_Add,          setgaps,          {.i = +5 } },
 	{ MODKEY|ShiftMask,               XK_minus,           setgaps,          {.i = GAP_TOGGLE} },
 	{ MODKEY|ShiftMask,               XK_KP_Subtract,     setgaps,          {.i = GAP_TOGGLE} },
-	{ MODKEY|ShiftMask,               XK_equal,           setgaps,          {.i = GAP_RESET } },
-	{ MODKEY|ShiftMask,               XK_KP_Add,          setgaps,          {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,               XK_equal,           setgaps,          {.i = GAP_TOGGLE } },
+	{ MODKEY|ShiftMask,               XK_KP_Add,          setgaps,          {.i = GAP_TOGGLE } },
 	TAGKEYS(                          XK_1,                                 0)
 	TAGKEYS(                          XK_KP_End,                            0)
 	TAGKEYS(                          XK_2,                                 1)

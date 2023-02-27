@@ -1466,7 +1466,7 @@ pop(Client *c)
 
 	c->mon->tagmarked[i] = nexttiled(c->mon->clients);
 	detach(c);
-	attachbottom(c);
+	attach(c);
 	focus(c);
 	arrange(c->mon);
 }
