@@ -31,7 +31,6 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"alacritty", NULL,
   "qbittorrent", NULL,
 	NULL /* terminate */
 };
@@ -52,6 +51,7 @@ static const Rule rules[] = {
   { "csgo_linux64", NULL,       NULL,       1 << 0,       0,            0 },
   { "discord",      NULL,       NULL,       1 << 5,       0,            1 },
   { "Steam",        NULL,       NULL,       1 << 4,       0,            1 },
+  { "mpv",          NULL,       NULL,       1 << 6,       0,            0 },
 };
 
 /* layout(s) */
