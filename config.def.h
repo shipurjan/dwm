@@ -33,6 +33,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
   "qbittorrent", NULL,
+  "dwmblocks", NULL,
 	NULL /* terminate */
 };
 
