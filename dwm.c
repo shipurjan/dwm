@@ -206,6 +206,7 @@ static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
 static void monocle(Monitor *m);
+static void mouseclick(const Arg *arg);
 static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void pop(Client *c);
@@ -257,6 +258,8 @@ static void updatestatus(void);
 static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
+static void warpmouse_x(const Arg *arg);
+static void warpmouse_y(const Arg *arg);
 static void view(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
@@ -1369,6 +1372,11 @@ monocle(Monitor *m)
 }
 
 void
+mouseclick(const Arg *arg){
+
+}
+
+void
 movemouse(const Arg *arg)
 {
 	int x, y, ocx, ocy, nx, ny;
@@ -2475,6 +2483,16 @@ updatewmhints(Client *c)
 			c->neverfocus = 0;
 		XFree(wmh);
 	}
+}
+
+void
+warpmouse_x(const Arg *arg){ 
+      XWarpPointer(dpy, None, None, 0, 0, 0, 0, arg->i, 0);
+}
+
+void
+warpmouse_y(const Arg *arg){ 
+      XWarpPointer(dpy, None, None, 0, 0, 0, 0, 0, arg->i);
 }
 
 void
