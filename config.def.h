@@ -48,7 +48,6 @@ static const Rule rules[] = {
 	/* class          instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1 },
 	{ "glevia2.exe",  NULL,       NULL,       0,            1,           -1 },
-	{ "mpv",          NULL,       NULL,       0,            1,           -1 },
   { "qBittorrent",  NULL,       NULL,       1 << 6,       0,            1 },
   { "steam_app_",   NULL,       NULL,       1 << 0,       0,            0 },
   { "csgo_linux64", NULL,       NULL,       1 << 0,       0,            0 },
